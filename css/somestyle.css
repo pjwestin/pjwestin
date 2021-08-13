@@ -1,0 +1,599 @@
+html,
+body {      
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+}
+
+/***Custom Pokemon font created by David. https://www.dafont.com/pkmn-rbygsc.font#null
+I must remember to donate to him and see if he has any terms of use**/
+
+@font-face {
+    font-family: 'pkmn_rbygscregular';
+    src: url('pkmn_rbygsc-webfont.woff2') format('woff2'),
+         url('pkmn_rbygsc-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    margin: 0;
+}
+
+/**Custom Hyperlink Colors**/
+
+a:link {
+  color: #768448;
+}
+
+a:visited {
+  color: #3f503f;
+}
+
+a:hover {
+  color: #243137;
+}
+
+/**Gameboy Colors, stored as classes for ease of use**/
+
+.darkest {
+  color: #243137;
+}
+
+.dark {
+  color: #3f503f;
+}
+
+.light {
+  color: #768448;
+}
+
+.lightest {
+  color: #ACB56B;
+}
+
+/*******Main Flex Box that keeps Text Centered in Gameboy Screen*********/
+
+.gameboy {
+      display: flex;
+      min-height: 100vh;
+      padding: 0px;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+.screen {
+      margin: auto;
+      max-width: 45vmax;
+      min-width: 80vmin;
+      min-height: 38vh;
+      max-height: 53vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+
+/*******Specific apsect ratios for Gameboy Screen*********/
+
+@media (min-aspect-ratio: 2/1) {
+  .gameboy {
+      display: flex;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+.screen {
+      margin: auto;
+      max-width: 45vmax;
+      min-width: 80vmin;
+      min-height: 66vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+}
+
+@media (min-aspect-ratio: 5/2) {
+  .gameboy {
+      display: flex;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+.screen {
+      margin: auto;
+      max-width: 45vmax;
+      min-width: 80vmin;
+      min-height: 80vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+}
+
+/*****Custom Scrollbar Code*****/
+
+/*Firefox*/
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #3f503f #768448;
+  }
+
+/* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #768448;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #3f503f;
+  }
+
+/*****Ensures Scrollbar disappears on smaller screens*****/
+
+@media (max-width: 1200px) {
+/*Firefox*/
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
+  }
+/* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+
+
+
+/*******I Spent like over a day trying to create responsive layouts for dozens of senarios until I finally stumble across the setting above which worked naturally and perfectly;
+After that, it really only took two specific aspect ratios in media queries to perfect the layout. Everything below this point nearly 500 lines of garbage I wrote and tested 
+for no reason. Oh well, ive and learn. ¯\_(ツ)_/¯ ****************
+
+@media (orientation: portrait) and (min-width: 1200px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+  		max-width: 45vmax;
+  		min-width: 80vmin;
+  		min-height: 33vmax;
+  		max-height: 45vmax;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+		}
+}
+
+@media (orientation: portrait) and (min-width: 1070px) and (max-width: 1199px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		max-width: 74vw;
+		min-width: 74vw;
+  		max-height: 60vmax;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+		}
+}
+
+@media (orientation: portrait) and (min-width: 900px) and (max-width: 1069px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		max-width: 82vw;
+		min-width: 825px;
+  		max-height: 60vmax;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+		}
+}
+
+@media (orientation: portrait) and (min-width: 736px) and (max-width: 899px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		max-width: 95vw;
+		min-width: 80vw;
+  		max-height: 58vmax;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+		}
+}
+
+@media (orientation: portrait) and (max-width: 735px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		max-width: 100vw;
+		min-width: 80vw;
+  		max-height: 58vmax;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+		}
+}
+
+@media (orientation: portrait) and (max-width: 900px) and (max-height: 999px)
+
+
+
+
+/***********Horizontal Orientation 1080P***************
+
+
+@media (orientation: landscape) and (min-width: 1750px) and (min-height: 1000px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		max-width: 45vmax;
+		max-height: 55vmin;
+  		min-height: 55vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: purple;
+		}
+}
+
+@media (orientation: landscape) and (min-width: 1550px) and (max-width: 1749px) and (min-height: 1000px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		min-width: 45vmax;
+		max-width: 48vmax;
+  		max-height: 57vmin;
+  		min-height: 57vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: green;
+		}
+}
+
+/*******This Ratio is also the Landscape position for the iPad Pro*******
+
+@media (orientation: landscape) and (min-width: 1350px) and (max-width: 1549px) and (min-height: 1000px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		min-width: 52vmax;
+		max-width: 54vmax;
+  		max-height: 57vmin;
+  		min-height: 57vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: blue;
+		}
+}
+
+@media (orientation: landscape) and (min-width: 1150px) and (max-width: 1349px) and (min-height: 1000px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		min-width: 60vmax;
+		max-width: 62vmax;
+  		max-height: 57vmin;
+  		min-height: 57vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: red;
+		}
+}
+
+
+
+@media (orientation: landscape) and (min-width: 1000px) and (max-width: 1149px) and (min-height: 1000px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		max-width: 70vmax;
+		min-width: 60vmax;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+		color: white;
+  		background-color: orange;
+		}
+}
+
+
+/***********Horizontal Orientation Narrower than 1080P************
+
+
+@media (orientation: landscape) and (min-width: 1750px) and (max-height: 999px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		max-width: 45vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: white;
+		}
+}
+
+@media (orientation: landscape) and (min-width: 1550px) and (max-width: 1749px) and (max-height: 999px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		max-width: 45vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: black;
+		}
+}
+
+@media (orientation: landscape) and (min-width: 1350px) and (max-width: 1549px) and (max-height: 999px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+  		margin: auto;
+		max-width: 46vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: white;
+		}
+}
+
+@media (orientation: landscape) and (min-width: 1150px) and (max-width: 1349px) and (min-height: 850px) and (max-height: 999px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+		margin: auto;
+		max-width: 53vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: black;
+		}
+}
+
+
+
+@media (orientation: landscape) and (min-width: 1000px) and (max-width: 1149px) and (min-height: 850px) and (max-height: 999px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+		margin: auto;
+		max-width: 60vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: white;
+		}
+}
+
+
+@media (orientation: landscape) and (max-width: 999px) and (min-height: 850px) and (max-height: 999px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+ 		margin: auto;
+		max-width: 72vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: black;
+		}
+}
+
+
+/******1350x850 and Smaller******
+
+
+@media (orientation: landscape) and (min-width: 1150px) and (max-width: 1349px) and (max-height: 849px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+		margin: auto;
+		max-width: 45vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: pink;
+		}
+}
+
+
+
+@media (orientation: landscape) and (min-width: 1000px) and (max-width: 1149px) and (max-height: 849px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+		margin: auto;
+		max-width: 52vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: pink
+		}
+}
+
+
+@media (orientation: landscape) and (max-width: 999px) and (max-height: 849px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+ 		margin: auto;
+		max-width: 59vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: pink;
+		}
+}
+
+
+/********less than 700*********
+
+
+@media (orientation: landscape) and (min-width: 1150px) and (max-width: 1349px) and (max-height: 849px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+		margin: auto;
+		max-width: 44vmax;
+		min-width: 44vmin
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: pink;
+		}
+}
+
+
+
+@media (orientation: landscape) and (min-width: 1000px) and (max-width: 1149px) and (max-height: 849px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+		margin: auto;
+		max-width: 52vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: pink
+		}
+}
+
+
+@media (orientation: landscape) and (max-width: 999px) and (max-height: 849px) {
+	.gameboy {
+  		display: flex;
+  		min-height: 100vh;
+  		justify-content: center;
+  		align-items: center;
+  		overflow: hidden;
+		}
+	.screen {
+ 		margin: auto;
+		max-width: 59vw;
+  		max-height: 58vmin;
+  		overflow-y: auto;
+  		overflow-x: hidden;
+  		background-color: pink;
+		}
+}
