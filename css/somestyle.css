@@ -51,6 +51,11 @@ a:hover {
 .lightest {
   color: #ACB56B;
 }
+/**********/
+
+#selector {
+   height: 100vh;
+}
 
 /*******Main Flex Box that keeps Text Centered in Gameboy Screen*********/
 
