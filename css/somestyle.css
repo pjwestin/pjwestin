@@ -1,6 +1,7 @@
 html,
 body {      
-      height: 100%;
+    margin: 0;  
+    height: 100%;
 }
 
 /***Custom Pokemon font created by David. https://www.dafont.com/pkmn-rbygsc.font#null
