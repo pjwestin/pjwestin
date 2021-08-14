@@ -29,7 +29,7 @@
 </head>
 <body>
 	<title>Under Construction</title>
-<div>
+<div id="urlfix">
 <div class="gameboy" >
   <div class="screen">
   	<h1 class="darkest">PJ Westin</h1>
@@ -42,7 +42,7 @@
   <script src="js/script.js"></script>
   <script src="js/gameboy.js"></script>
   <script>function calcVH() {
-    $(class="gameboy").innerHeight( $(this).innerHeight() );
+    $("#urlfix").innerHeight( $(this).innerHeight() );
 }
 (function($) { 
   calcVH();
