@@ -1,11 +1,9 @@
-html,
-body,
-.full-screen {
-  height: 100%;
+html {
+    overflow: hidden;
 }
-
 body {
-  margin: 0;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling:touch;
 }
 
 /***Custom Pokemon font created by David. https://www.dafont.com/pkmn-rbygsc.font#null
@@ -53,7 +51,7 @@ a:hover {
 }
 /**********/
 
-#selector {
+#urlfix {
    height: 100vh;
 }
 
